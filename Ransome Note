@@ -29,3 +29,20 @@ public:
         return includes(magazine.begin(), magazine.end(), ransomNote.begin(), ransomNote.end());
     }
 };
+
+
+Java Solution:
+
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+            int[] arr = new int[26];
+        for (char ch : magazine.toCharArray()) {
+            arr[ch -'a']++;
+        }
+        for (char ch : ransomNote.toCharArray()) {
+            arr[ch - 'a']--;
+            if (arr[ch - 'a'] < 0) return false;
+        }
+        return true;
+    }
+}
